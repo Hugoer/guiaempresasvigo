@@ -18,9 +18,12 @@ fb.getUrlList().once('value', function(data){
 	log('Datos recuperados');
 	var urlArray = [];
 
-	for (var company in data.val()) {
-		log(data.val()[company].companyName);
-		urlArray.push(data.val()[company].url);
+	var allValues = Object.keys(data.val()),
+		totalValues = allValues.length;
+
+	for (var i = 0; i < totalValues; i++) {
+		log(i + ' de ' + totalValues);
+		urlArray.push(data.val()[allValues[i]].url);
 	}
 
 	var arrayCount = urlArray.length;
@@ -50,8 +53,12 @@ fb.getUrlList().once('value', function(data){
 							city          : $('#ficha_iden').find('#situation_loc').text().trim(),
 							description   : $('#texto_ficha').text().trim(),
 							name          : $('h1').text().trim(),
-							phones		  : $($('#ficha_iden').find('li')[3]).text().replace('Teléfono: ','').split(';')
+							phones        : $($('#ficha_iden').find('li:contains("Telé")')[0]).text().replace('Teléfono: ','').split(';')
 						};
+						
+						var cnaeText = $($('#ficha_iden').find('li:contains("CNAE")')[0]).text().replace('CNAE: ', '');
+						company.cnaeCode = cnaeText.substring(0, cnaeText.indexOf(' -') );
+						company.cnaeText = cnaeText.substring(cnaeText.indexOf(' - ') ).replace(' - ','');
 
 						if ( !!$($('#texto_ficha').find('a')).attr('href') ){
 							company.web = $($('#texto_ficha').find('a')).attr('href');
@@ -67,7 +74,7 @@ fb.getUrlList().once('value', function(data){
 		                	
 		                	setTimeout(function(){
 								getDataComapnyFromUrl(urlArray[0]);
-		                	}, Number(config.paginationTimeOut / 2) );
+		                	}, Number(config.paginationTimeOut * 2) );
 
 	                	}else{
 	                		log('Finished!!!');
