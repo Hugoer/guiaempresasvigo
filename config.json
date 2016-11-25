@@ -1,8 +1,9 @@
 {
-	"debug"             : true,
-	"mainURl"           : "http://guiaempresas.universia.es",
-	"initialUrl"        : "http://guiaempresas.universia.es/localidad/VIGO-PONTEVEDRA/?qPagina=",
-	"userAgent"         : "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36",
-	"paginationCount"   : 908,
-	"paginationTimeOut" : 2000
+	"debug"               : true,
+	"mainURl"             : "http://guiaempresas.universia.es",
+	"initialUrl"          : "http://guiaempresas.universia.es/localidad/VIGO-PONTEVEDRA/?qPagina=",
+	"userAgent"           : "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36",
+	"paginationCount"     : 908,
+	"paginationTimeOut"   : 500,
+	"paginationCountItem" : 2000
 }
